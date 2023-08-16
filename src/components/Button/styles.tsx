@@ -23,10 +23,14 @@ const StyledButton = styled.button<StyledButtonProps>`
 	background-color: ${({ $backgroundColor }) => $backgroundColor};
 	border: ${({ $border }) => $border};
 	cursor: pointer;
-	transition: all 0.5s ease-in-out;
+	transition: all 0.2s ease-in-out;
 	user-select: none;
 	outline: none;
 	box-shadow: none;
+
+	&:hover {
+		opacity: 0.77;
+	}
 `
 
 export default StyledButton

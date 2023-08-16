@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 
+const SECTION_MEDIA_MAX_WIDTH = '800px'
+
 const StyledHelloPageDiv = styled.div`
 	display: flex;
 	width: 100%;
 
 	section {
 		width: 50%;
+		user-select: none;
 	}
 
 	.section__logo--left {
@@ -19,6 +22,10 @@ const StyledHelloPageDiv = styled.div`
 			height: 350px;
 			user-select: none;
 			pointer-events: none;
+		}
+
+		@media (max-width: ${SECTION_MEDIA_MAX_WIDTH}) {
+			display: none;
 		}
 	}
 	.section__actions--right {
@@ -42,6 +49,16 @@ const StyledHelloPageDiv = styled.div`
 				font-size: 1.2em;
 				font-weight: bold;
 			}
+		}
+
+		@media (max-width: ${SECTION_MEDIA_MAX_WIDTH}) {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			margin: 0 auto;
 		}
 	}
 `

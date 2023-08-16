@@ -21,12 +21,12 @@ const HelloPage: React.FC = () => {
 				<h2 className="section__actions--right__title">
 					Begin <br /> create cool blogs
 				</h2>
-				<p className="section__actions--right__paragraph"> Join now. </p>
+				<p className="section__actions--right__paragraph"> Join today. </p>
 				<ButtonLoginGoogle margin="24px 0" onClick={() => null} />
 				<ButtonLoginApple margin="12px 0" onClick={() => null} />
 				<Divider text="or" />
 				<Button margin="12px 0" backgroundColor={Colors.blue} color={Colors.white} onClick={() => null}>
-					Sign Up
+					Create account
 				</Button>
 
 				<div className="section__actions--right__already-have-account">
