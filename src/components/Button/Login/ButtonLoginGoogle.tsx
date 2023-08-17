@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Button, { ButtonProps } from '..'
-
 import GoogleLogo from '../../../assets/images/logo-google.png'
+
+import Button, { ButtonProps } from '..'
 
 import StyledLoginLogoImg from './styles'
 

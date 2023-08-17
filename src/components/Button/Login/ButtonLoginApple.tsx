@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Button, { ButtonProps } from '..'
-
 import AppleLogo from '../../../assets/images/logo-apple.png'
+
+import Button, { ButtonProps } from '..'
 
 import StyledLoginLogoImg from './styles'
 

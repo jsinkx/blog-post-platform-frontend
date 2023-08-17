@@ -5,19 +5,21 @@ import Colors from '../../shared/colors'
 import StyledButton from './styles'
 
 export type ButtonProps = {
+	className?: string
 	children: React.ReactNode
 	onClick: () => void
-	isSubmit?: boolean | undefined
-	height?: string | undefined
-	width?: string | undefined
-	margin?: string | undefined
-	color?: string | undefined
-	border?: string | undefined
-	borderColor?: string | undefined
-	backgroundColor?: string | undefined
+	isSubmit?: boolean
+	height?: string
+	width?: string
+	margin?: string
+	color?: string
+	border?: string
+	borderColor?: string
+	backgroundColor?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
+	className,
 	children,
 	onClick,
 	isSubmit,
@@ -30,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
 	return (
 		<StyledButton
+			className={className}
 			type={isSubmit ? 'submit' : 'button'}
 			onClick={onClick}
 			$height={height}
