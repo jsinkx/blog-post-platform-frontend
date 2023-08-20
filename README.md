@@ -29,3 +29,4 @@ yarn install
 - React
 - styled-components
 - react-router-dom
+- react-hook-form

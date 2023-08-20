@@ -68,7 +68,7 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
 			<StyledModalOverlay $ModalWindowBackgroundColor={backgroundColor} ref={rootRef}>
 				<div className="modal-window">
 					<header>
-						<IconButton onClick={() => null}>
+						<IconButton onClick={onClose}>
 							<CrossIcon color={Colors.white} />
 						</IconButton>
 						{title && <h2> {title} </h2>}

@@ -7,7 +7,7 @@ import StyledButton from './styles'
 export type ButtonProps = {
 	className?: string
 	children: React.ReactNode
-	onClick: () => void
+	onClick?: () => void
 	isSubmit?: boolean
 	height?: string
 	width?: string
