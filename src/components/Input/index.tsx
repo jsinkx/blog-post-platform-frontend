@@ -8,11 +8,10 @@ type InputProps = {
 	height?: string
 	width?: string
 	type?: React.HTMLInputTypeAttribute
-	name: string
+	name?: string
 	placeholder: string
-	value: string
-	onChange: React.ChangeEventHandler<HTMLInputElement>
-	required?: boolean
+	value?: string
+	onChange?: React.ChangeEventHandler<HTMLInputElement>
 	disabled?: boolean
 	readOnly?: boolean
 	autoComplete?: 'on' | 'off'
@@ -30,30 +29,30 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			placeholder,
 			value,
 			onChange,
-			required,
 			disabled,
 			readOnly,
 			autoComplete = 'on',
 		},
 		ref,
-	) => (
-		<StyledInput
-			ref={ref}
-			style={style}
-			className={className}
-			$height={height}
-			$width={width}
-			type={type}
-			name={name}
-			placeholder={placeholder}
-			value={value}
-			onChange={onChange}
-			disabled={disabled}
-			readOnly={readOnly}
-			required={required}
-			autoComplete={autoComplete}
-		/>
-	),
+	) => {
+		return (
+			<StyledInput
+				style={style}
+				className={className}
+				$height={height}
+				$width={width}
+				type={type}
+				name={name}
+				placeholder={placeholder}
+				value={value}
+				onChange={onChange}
+				disabled={disabled}
+				readOnly={readOnly}
+				autoComplete={autoComplete}
+				ref={ref}
+			/>
+		)
+	},
 )
 
 export default Input

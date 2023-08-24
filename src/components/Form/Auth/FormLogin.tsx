@@ -3,8 +3,6 @@ import { FieldValues, useForm } from 'react-hook-form'
 
 import Colors from '../../../shared/colors'
 
-import useInput from '../../../hooks/useInput'
-
 import Button from '../../Button'
 import ButtonLoginApple from '../../Button/Login/ButtonLoginApple'
 import ButtonLoginGoogle from '../../Button/Login/ButtonLoginGoogle'
@@ -15,11 +13,8 @@ import { StyledInput, StyledLoginForm } from './styles'
 const FormLogin: React.FC = () => {
 	const { register, handleSubmit } = useForm()
 
-	// const username = useInput('')
-	const password = useInput('')
-
 	const onSubmit = (data: FieldValues) => {
-		console.log(data)
+		console.log('data', data)
 	}
 
 	return (
@@ -28,16 +23,8 @@ const FormLogin: React.FC = () => {
 			<ButtonLoginGoogle onClick={() => null} margin="20px 0" />
 			<ButtonLoginApple onClick={() => null} margin="20px 0" />
 			<Divider text="Or" />
-			{/* <StyledInput name="username" value={username.value} onChange={username.onChange} placeholder="Login..." /> */}
-			<StyledInput
-				{...register('password', { required: true })}
-				type="password"
-				name="password"
-				value={password.value}
-				onChange={password.onChange}
-				placeholder="Password..."
-			/>
-			<input type="submit" />
+			<StyledInput {...register('username')} placeholder="Username..." />
+			<StyledInput {...register('password')} type="password" placeholder="Password..." />
 			<Button isSubmit margin="20px 0">
 				Next
 			</Button>
