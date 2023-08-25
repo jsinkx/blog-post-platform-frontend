@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
-const StyledLoginLogoImg = styled.img`
-	height: 17px;
-	margin-right: 7px;
+import AppleLogoIcon from '../../Icons/AppleLogoIcon'
+import GoogleLogoIcon from '../../Icons/GoogleLogoIcon'
+
+export const StyledAppleLogoIcon = styled(AppleLogoIcon)`
+	margin-right: 3px;
 `
 
-export default StyledLoginLogoImg
+export const StyledGoogleLogoIcon = styled(GoogleLogoIcon)`
+	margin-right: 5px;
+`

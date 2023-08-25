@@ -16,20 +16,18 @@ export type ButtonProps = {
 	color?: string
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button: React.FC<ButtonProps> = (
-	{
-		className,
-		children,
-		onClick,
-		variant = 'contained',
-		width = '300px',
-		height = '36px',
-		margin = '0',
-		textColor = Colors.white,
-		color = Colors.black,
-	},
+const Button: React.FC<ButtonProps> = ({
+	className,
+	children,
+	onClick,
+	variant = 'contained',
+	width = '300px',
+	height = '36px',
+	margin = '0',
+	textColor = Colors.white,
+	color = Colors.black,
 	...props
-) => {
+}) => {
 	return (
 		<StyledButton
 			className={className}

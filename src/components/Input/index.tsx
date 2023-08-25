@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import StyledInput from './styles'
 
@@ -15,7 +15,7 @@ type InputProps = {
 	disabled?: boolean
 	readOnly?: boolean
 	autoComplete?: 'on' | 'off'
-}
+} & HTMLAttributes<HTMLInputElement>
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	(
@@ -32,6 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			disabled,
 			readOnly,
 			autoComplete = 'on',
+			...props
 		},
 		ref,
 	) => {
@@ -50,6 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				readOnly={readOnly}
 				autoComplete={autoComplete}
 				ref={ref}
+				{...props}
 			/>
 		)
 	},
