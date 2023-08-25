@@ -9,6 +9,7 @@ export type ButtonProps = {
 	className?: string
 	children: React.ReactNode
 	onClick?: React.MouseEventHandler<HTMLButtonElement>
+	type?: 'submit' | 'reset' | 'button'
 	width?: string
 	height?: string
 	margin?: string
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	children,
 	onClick,
+	type = 'button',
 	variant = 'contained',
 	width = '300px',
 	height = '36px',
@@ -32,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
 		<StyledButton
 			className={className}
 			onClick={onClick}
+			type={type}
 			$variant={variant}
 			$width={width}
 			$height={height}
