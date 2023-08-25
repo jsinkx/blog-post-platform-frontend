@@ -31,3 +31,4 @@ yarn install
 - react-router-dom
 - react-hook-form
 - Redux Toolkit
+- axios
