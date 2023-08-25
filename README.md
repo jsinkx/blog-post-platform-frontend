@@ -30,3 +30,4 @@ yarn install
 - styled-components
 - react-router-dom
 - react-hook-form
+- Redux Toolkit
