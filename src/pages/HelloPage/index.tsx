@@ -16,7 +16,7 @@ import BlogPostPlatformWhiteIcon from '../../assets/images/blog-post-white-logo-
 import StyledHelloPageDiv from './styles'
 
 const HelloPage: React.FC = () => {
-	const [isOpen, setIsOpen] = React.useState(true)
+	const [isOpen, setIsOpen] = React.useState(false)
 	const [currentForm, setCurrentForm] = React.useState(FormAuthNames.LOGIN)
 
 	const formAuthContextValue = React.useMemo(
@@ -56,23 +56,13 @@ const HelloPage: React.FC = () => {
 				<ButtonLoginGoogle margin="24px 0" onClick={() => handleOpenModal(FormAuthNames.LOGIN_GOOGLE)} />
 				<ButtonLoginApple margin="12px 0" onClick={() => handleOpenModal(FormAuthNames.LOGIN_APPLE)} />
 				<Divider text="or" />
-				<Button
-					margin="12px 0"
-					backgroundColor={Colors.blue}
-					color={Colors.white}
-					onClick={() => handleOpenModal(FormAuthNames.REGISTER)}
-				>
+				<Button margin="12px 0" color={Colors.blue} onClick={() => handleOpenModal(FormAuthNames.REGISTER)}>
 					Create account
 				</Button>
 
 				<div className="section__actions--right__already-have-account">
 					<p> Have account ? </p>
-					<Button
-						backgroundColor="#00000000"
-						color={Colors.blue}
-						border={`1px solid ${Colors.blue}`}
-						onClick={() => handleOpenModal(FormAuthNames.LOGIN)}
-					>
+					<Button variant="outlined" color={Colors.blue} onClick={() => handleOpenModal(FormAuthNames.LOGIN)}>
 						Sign In
 					</Button>
 				</div>

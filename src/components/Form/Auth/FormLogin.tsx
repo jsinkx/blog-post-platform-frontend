@@ -20,21 +20,15 @@ const FormLogin: React.FC = () => {
 	return (
 		<StyledLoginForm onSubmit={handleSubmit(onSubmit)}>
 			<h2> Log In </h2>
-			<ButtonLoginGoogle onClick={() => null} margin="20px 0" />
-			<ButtonLoginApple onClick={() => null} margin="20px 0" />
+			<ButtonLoginGoogle onClick={() => null} margin="20px 0 15px" />
+			<ButtonLoginApple onClick={() => null} margin="5px 0 20px" />
 			<Divider text="Or" />
 			<StyledInput {...register('username')} placeholder="Username..." />
 			<StyledInput {...register('password')} type="password" placeholder="Password..." />
-			<Button isSubmit margin="20px 0">
+			<Button textColor={Colors.black} color={Colors.white} type="submit" margin="20px 0 15px">
 				Next
 			</Button>
-			<Button
-				backgroundColor="#00000000"
-				color={Colors.white}
-				border={`1px solid ${Colors.white}`}
-				onClick={() => null}
-				margin="20px 0"
-			>
+			<Button variant="outlined" color={Colors.white} onClick={() => null} margin="5px 0">
 				Forgot password ?
 			</Button>
 		</StyledLoginForm>
