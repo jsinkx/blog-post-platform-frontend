@@ -1,6 +1,6 @@
 {
-	"name": "blog-platform-frontend",
-	"description": "Frontend application blog platform ",
+	"name": "blog-post-platform-frontend",
+	"description": "Frontend application blog post platform",
 	"version": "1.0.0",
 	"private": false,
 	"scripts": {
