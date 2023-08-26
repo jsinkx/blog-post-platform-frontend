@@ -5,7 +5,9 @@ import { SERVER_URL } from './constants'
 const instance = axios.create({ baseURL: SERVER_URL })
 
 instance.interceptors.request.use((config) => {
-	config.headers.Authorization = window.localStorage.getItem('token')
+	const token = window.localStorage.getItem('token')
+
+	config.headers!.Authorization = `Bearer ${token}`
 
 	return config
 })
