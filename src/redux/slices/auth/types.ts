@@ -22,7 +22,7 @@ export type AuthLoginResponse = {
 	token: string
 }
 
-export type AuthLoginError = {
+export type AuthResponseError = {
 	response: {
 		data: ErrorWithMessage
 	}

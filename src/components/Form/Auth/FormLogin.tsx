@@ -78,7 +78,6 @@ const FormLogin: React.FC = () => {
 				placeholder="Username..."
 			/>
 			{errors.username && <Error message={errors.username.message || ''} />}
-			{/* // Todo create eye icon (show password) */}
 			<StyledInput
 				{...register('password', { required: 'Please provide password' })}
 				type="password"

@@ -3,8 +3,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import HelloPage from '../../pages/HelloPage'
 
-import GlobalStyles from '../GlobalStyles'
-
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -13,12 +11,7 @@ const router = createBrowserRouter([
 ])
 
 const Routes: React.FC = () => {
-	return (
-		<div className="app">
-			<GlobalStyles />
-			<RouterProvider router={router} />
-		</div>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default Routes
