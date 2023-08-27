@@ -13,6 +13,7 @@ import Button from '../../Button'
 import ButtonLoginApple from '../../Button/Login/ButtonLoginApple'
 import ButtonLoginGoogle from '../../Button/Login/ButtonLoginGoogle'
 import Divider from '../../Divider'
+import Error from '../../Error'
 
 import { StyledInput, StyledLoginForm } from './styles'
 
@@ -24,7 +25,30 @@ type FormLoginValues = {
 const FormLogin: React.FC = () => {
 	const dispatch = useAppDispatch()
 
-	const { register, handleSubmit } = useForm<FormLoginValues>()
+	const {
+		formState: { errors },
+		register,
+		handleSubmit,
+	} = useForm<FormLoginValues>({
+		defaultValues: {
+			username: '',
+			password: '',
+		},
+	})
+
+	const [loginError, setLoginError] = React.useState<string[]>([])
+
+	const handleSuccessLogin = (token: string) => {
+		token && window.localStorage.setItem('token', token)
+	}
+
+	const handleErrorLogin = (err: unknown) => {
+		if (isErrorWithMessage(err)) {
+			setLoginError(Array.isArray(err.message) ? err.message : [err.message])
+		} else {
+			setLoginError(['Something goes wrong'])
+		}
+	}
 
 	const onSubmit: SubmitHandler<FormLoginValues> = async ({ username, password }) => {
 		if (username && password) {
@@ -36,12 +60,9 @@ const FormLogin: React.FC = () => {
 			try {
 				const { token } = await dispatch(fetchLogin(loginBody)).unwrap()
 
-				token && window.localStorage.setItem('token', token)
-
-				// Todo Create handle success login
+				handleSuccessLogin(token)
 			} catch (err: unknown) {
-				// Todo Create error handling
-				console.log(isErrorWithMessage(err) ? err.message : err)
+				handleErrorLogin(err)
 			}
 		}
 	}
@@ -52,10 +73,19 @@ const FormLogin: React.FC = () => {
 			<ButtonLoginGoogle onClick={() => null} margin="20px 0 15px" />
 			<ButtonLoginApple onClick={() => null} margin="5px 0 20px" />
 			<Divider text="Or" />
-			{/*	// Todo Create input errors  */}
-			<StyledInput {...register('username')} placeholder="Username..." />
+			<StyledInput
+				{...register('username', { required: 'Please provide username' })}
+				placeholder="Username..."
+			/>
+			{errors.username && <Error message={errors.username.message || ''} />}
 			{/* // Todo create eye icon (show password) */}
-			<StyledInput {...register('password')} type="password" placeholder="Password..." />
+			<StyledInput
+				{...register('password', { required: 'Please provide password' })}
+				type="password"
+				placeholder="Password..."
+			/>
+			{errors.password && <Error message={errors.password.message || ''} />}
+			{loginError && loginError.map((err) => <Error key={err} message={err} />)}
 			<Button textColor={Colors.black} color={Colors.white} type="submit" margin="20px 0 15px">
 				Next
 			</Button>
