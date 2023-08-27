@@ -2,35 +2,51 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-type StyledInputProps = {
-	$height: string
-	$width: string
+import IconButton from '../Button/IconButton'
+
+type StyledInputWrapperProps = {
+	$inputHeight: string
+	$inputWidth: string
 }
 
-const StyledInput = styled.input<StyledInputProps>`
-	height: ${({ $height }) => $height};
-	width: ${({ $width }) => $width};
-	padding-inline: 10px;
-	font-size: 1em;
-	border-radius: 5px;
-	color: ${Colors.white};
+export const StyledIconButton = styled(IconButton)``
+
+const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
+	display: flex;
+	align-items: center;
+	width: ${({ $inputWidth }) => $inputWidth};
+	height: ${({ $inputHeight }) => $inputHeight};
+	padding: 5px 10px;
 	border: 1px solid ${Colors.grey};
-	transition:
-		all,
-		color 0.2s ease-in-out;
-	background: transparent;
+	border-radius: 5px;
 	box-sizing: border-box;
-	outline: none;
+	background: transparent;
+	transition: all 0.2s ease-in-out;
 
-	&::placeholder {
-		color: #71767b;
-	}
-
-	&:-webkit-autofill {
-		-webkit-text-fill-color: ${Colors.white};
-		box-shadow: 0 0 0px 1000px ${Colors.black} inset;
+	input {
+		width: 100%;
+		height: 100%;
 		font-size: 1em;
+		color: ${Colors.white};
+		border: none;
+		margin: 0;
+		padding: 0;
+		transition: all 0.2s ease-in-out;
+		background: transparent;
+		box-sizing: border-box;
+		outline: none;
+
+		&::placeholder {
+			color: #71767b;
+			user-select: none;
+		}
+
+		&:-webkit-autofill {
+			-webkit-text-fill-color: ${Colors.white};
+			box-shadow: 0 0 0px 1000px ${Colors.black} inset;
+			font-size: 1em;
+		}
 	}
 `
 
-export default StyledInput
+export default StyledInputWrapper
