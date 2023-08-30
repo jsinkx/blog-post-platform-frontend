@@ -8,11 +8,11 @@ type DividerProps = {
 	width?: string
 	color?: string
 	text?: string
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
-const Divider: React.FC<DividerProps> = ({ width = '300px', color = Colors.white, text }) => {
+const Divider: React.FC<DividerProps> = ({ width = '300px', color = Colors.white, text, ...props }) => {
 	return (
-		<StyledDividerContainerDiv $width={width} $color={color}>
+		<StyledDividerContainerDiv $width={width} $color={color} {...props}>
 			<div />
 			<span> {text} </span>
 			<div />

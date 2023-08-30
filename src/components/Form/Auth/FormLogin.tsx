@@ -51,27 +51,35 @@ const FormLogin: React.FC = () => {
 	}
 
 	const onSubmit: SubmitHandler<FormLoginValues> = async ({ username, password }) => {
-		if (username && password) {
-			const loginBody = {
-				username,
-				password,
-			}
+		const loginBody = {
+			username,
+			password,
+		}
 
-			try {
-				const { token } = await dispatch(fetchLogin(loginBody)).unwrap()
+		try {
+			const { token } = await dispatch(fetchLogin(loginBody)).unwrap()
 
-				handleSuccessLogin(token)
-			} catch (err: unknown) {
-				handleErrorLogin(err)
-			}
+			handleSuccessLogin(token)
+		} catch (err: unknown) {
+			handleErrorLogin(err)
 		}
 	}
 
 	return (
 		<StyledLoginForm onSubmit={handleSubmit(onSubmit)}>
 			<h2> Log In </h2>
-			<ButtonLoginGoogle onClick={() => null} margin="20px 0 15px" />
-			<ButtonLoginApple onClick={() => null} margin="5px 0 20px" />
+			<ButtonLoginGoogle
+				onClick={() => null}
+				style={{
+					margin: '20px 0 15px',
+				}}
+			/>
+			<ButtonLoginApple
+				onClick={() => null}
+				style={{
+					margin: '5px 0 20px',
+				}}
+			/>
 			<Divider text="Or" />
 			<StyledInput
 				{...register('username', { required: 'Please provide username' })}
@@ -85,10 +93,24 @@ const FormLogin: React.FC = () => {
 			/>
 			{errors.password && <Error message={errors.password.message || ''} />}
 			{loginError && loginError.map((err) => <Error key={err} message={err} />)}
-			<Button textColor={Colors.black} color={Colors.white} type="submit" margin="20px 0 15px">
+			<Button
+				textColor={Colors.black}
+				color={Colors.white}
+				type="submit"
+				style={{
+					margin: '20px 0 15px',
+				}}
+			>
 				Next
 			</Button>
-			<Button variant="outlined" color={Colors.white} onClick={() => null} margin="5px 0">
+			<Button
+				variant="outlined"
+				color={Colors.white}
+				onClick={() => null}
+				style={{
+					marginBlock: '5px',
+				}}
+			>
 				Forgot password ?
 			</Button>
 		</StyledLoginForm>

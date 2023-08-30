@@ -3,9 +3,9 @@ import React from 'react'
 type GoogleLogoIconProps = {
 	size?: string
 	className?: string
-}
+} & React.HTMLAttributes<SVGElement>
 
-const GoogleLogoIcon: React.FC<GoogleLogoIconProps> = ({ size = '20px', className }) => {
+const GoogleLogoIcon: React.FC<GoogleLogoIconProps> = ({ size = '20px', className, ...props }) => {
 	return (
 		<svg
 			className={className}
@@ -13,6 +13,7 @@ const GoogleLogoIcon: React.FC<GoogleLogoIconProps> = ({ size = '20px', classNam
 			width={size}
 			height={size}
 			viewBox="0 0 48 48"
+			{...props}
 		>
 			<path
 				fill="#FFC107"

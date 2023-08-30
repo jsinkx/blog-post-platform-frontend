@@ -17,14 +17,12 @@ const StyledModalOverlay = styled.div<StyledModalOverlayProps>`
 	background-color: #242d342d;
 	backdrop-filter: blur(2px);
 	z-index: 999999;
-
-	@media (max-height: ${MODAL_OVERLAY_MEDIA_MAX_HEIGHT}) {
-		overflow-y: scroll;
-	}
+	overflow: auto;
 
 	.modal-window {
 		width: 50vw;
-		margin: 25vh auto;
+		margin-top: 19vh;
+		margin-inline: auto;
 		padding: 2vw;
 		padding-top: 0.1vw;
 		padding-bottom: 1.8vw;
@@ -33,6 +31,7 @@ const StyledModalOverlay = styled.div<StyledModalOverlayProps>`
 		background-color: ${({ $ModalWindowBackgroundColor }) => $ModalWindowBackgroundColor};
 		user-select: text;
 		box-sizing: border-box;
+		overflow: auto;
 
 		header {
 			width: 100%;
@@ -51,10 +50,13 @@ const StyledModalOverlay = styled.div<StyledModalOverlayProps>`
 
 		@media (max-width: ${MODAL_WINDOW_MEDIA_MAX_WIDTH}) {
 			width: 100%;
+			margin: 0;
+			margin-top: 10%;
+			padding-bottom: 3vh;
 		}
 
 		@media (max-height: ${MODAL_OVERLAY_MEDIA_MAX_HEIGHT}) {
-			margin-top: 5vh;
+			margin-top: 4vh;
 		}
 	}
 `

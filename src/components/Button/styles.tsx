@@ -6,7 +6,6 @@ type StyledButtonProps = {
 	$variant: ButtonVariant
 	$width: string
 	$height: string
-	$margin: string
 	$textColor: string
 	$color: string
 }
@@ -38,7 +37,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 	${({ $textColor, $color, $variant }) => variantStyles($textColor, $color, $variant)}
 	height: ${({ $height }) => $height};
 	width: ${({ $width }) => $width};
-	margin: ${({ $margin }) => $margin};
+	margin: 0;
 	padding: 10px 30px;
 	font-weight: bold;
 	border-radius: 20px;

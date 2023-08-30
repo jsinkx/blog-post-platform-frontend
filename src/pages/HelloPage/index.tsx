@@ -53,10 +53,26 @@ const HelloPage: React.FC = () => {
 					Begin <br /> create cool blogs
 				</h2>
 				<p className="section__actions--right__paragraph"> Join today. </p>
-				<ButtonLoginGoogle margin="24px 0" onClick={() => handleOpenModal(FormAuthNames.LOGIN_GOOGLE)} />
-				<ButtonLoginApple margin="12px 0" onClick={() => handleOpenModal(FormAuthNames.LOGIN_APPLE)} />
+				<ButtonLoginGoogle
+					style={{
+						marginBlock: '24px',
+					}}
+					onClick={() => handleOpenModal(FormAuthNames.LOGIN_GOOGLE)}
+				/>
+				<ButtonLoginApple
+					style={{
+						marginBlock: '12px',
+					}}
+					onClick={() => handleOpenModal(FormAuthNames.LOGIN_APPLE)}
+				/>
 				<Divider text="or" />
-				<Button margin="12px 0" color={Colors.blue} onClick={() => handleOpenModal(FormAuthNames.REGISTER)}>
+				<Button
+					style={{
+						marginBlock: '12px',
+					}}
+					color={Colors.blue}
+					onClick={() => handleOpenModal(FormAuthNames.REGISTER)}
+				>
 					Create account
 				</Button>
 

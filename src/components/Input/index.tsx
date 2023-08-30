@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react'
+import React from 'react'
 
 import Colors from '../../shared/colors'
 
@@ -13,14 +13,10 @@ type InputProps = {
 	height?: string
 	width?: string
 	type?: React.HTMLInputTypeAttribute
-	name?: string
-	placeholder: string
-	value?: string
-	onChange?: React.ChangeEventHandler<HTMLInputElement>
 	disabled?: boolean
 	readOnly?: boolean
 	autoComplete?: 'on' | 'off'
-} & HTMLAttributes<HTMLInputElement>
+} & React.HTMLAttributes<HTMLInputElement>
 
 const EYE_ICON_SIZE = '30px'
 const EYE_ICON_COLOR = Colors.white
@@ -33,10 +29,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			height = '60px',
 			width = '300px',
 			type = 'text',
-			name,
-			placeholder,
-			value,
-			onChange,
 			disabled,
 			readOnly,
 			autoComplete = 'on',
@@ -60,10 +52,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				*/}
 				<input
 					type={!isShowPassword ? type : 'text'}
-					name={name}
-					placeholder={placeholder}
-					value={value}
-					onChange={onChange}
 					disabled={disabled}
 					readOnly={readOnly}
 					autoComplete={autoComplete}
