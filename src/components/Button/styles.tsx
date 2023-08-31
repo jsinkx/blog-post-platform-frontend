@@ -8,6 +8,7 @@ type StyledButtonProps = {
 	$height: string
 	$textColor: string
 	$color: string
+	disabled: boolean
 }
 
 const variantStyles = (textColor: string, color: string, variant: ButtonVariant) => {
@@ -46,6 +47,14 @@ const StyledButton = styled.button<StyledButtonProps>`
 	user-select: none;
 	outline: none;
 	box-shadow: none;
+
+	${({ disabled }) =>
+		disabled &&
+		`
+		pointer-events: none;
+		cursor: default;
+		opacity: 0.5;
+	`}
 
 	&:hover {
 		opacity: 0.77;

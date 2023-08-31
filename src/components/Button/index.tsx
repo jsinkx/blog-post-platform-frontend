@@ -11,6 +11,7 @@ export type ButtonProps = {
 	height?: string
 	textColor?: string
 	color?: string
+	disabled?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 	height = '36px',
 	textColor = Colors.white,
 	color = Colors.black,
+	disabled,
 	...props
 }) => {
 	return (
@@ -29,6 +31,7 @@ const Button: React.FC<ButtonProps> = ({
 			$height={height}
 			$textColor={textColor}
 			$color={color}
+			disabled={disabled}
 			{...props}
 		>
 			{children}

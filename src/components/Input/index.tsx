@@ -14,7 +14,6 @@ type InputProps = {
 	width?: string
 	type?: React.HTMLInputTypeAttribute
 	disabled?: boolean
-	readOnly?: boolean
 	autoComplete?: 'on' | 'off'
 } & React.HTMLAttributes<HTMLInputElement>
 
@@ -29,8 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			height = '60px',
 			width = '300px',
 			type = 'text',
-			disabled,
-			readOnly,
+			disabled = false,
 			autoComplete = 'on',
 			...props
 		},
@@ -45,7 +43,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		)
 
 		return (
-			<StyledInputWrapper $inputHeight={height} $inputWidth={width} style={style} className={className}>
+			<StyledInputWrapper
+				$inputHeight={height}
+				$inputWidth={width}
+				$disabled={disabled}
+				style={style}
+				className={className}
+			>
 				{/* 
 					isShowPassword by default is false. 
 					Switch this flag can be only by button, which render if input type is password.
@@ -53,7 +57,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				<input
 					type={!isShowPassword ? type : 'text'}
 					disabled={disabled}
-					readOnly={readOnly}
 					autoComplete={autoComplete}
 					ref={ref}
 					{...props}

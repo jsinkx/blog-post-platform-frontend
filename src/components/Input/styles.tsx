@@ -7,6 +7,7 @@ import IconButton from '../Button/IconButton'
 type StyledInputWrapperProps = {
 	$inputHeight: string
 	$inputWidth: string
+	$disabled: boolean
 }
 
 export const StyledIconButton = styled(IconButton)``
@@ -22,6 +23,14 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 	box-sizing: border-box;
 	background: transparent;
 	transition: all 0.2s ease-in-out;
+
+	${({ $disabled }) =>
+		$disabled &&
+		`
+		pointer-events: none;
+		cursor: default;
+		opacity: 0.45;
+	`}
 
 	input {
 		width: 100%;
