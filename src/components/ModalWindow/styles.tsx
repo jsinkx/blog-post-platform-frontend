@@ -21,7 +21,7 @@ const StyledModalOverlay = styled.div<StyledModalOverlayProps>`
 
 	.modal-window {
 		width: 50vw;
-		margin-top: 19vh;
+		margin-top: 5vh;
 		margin-inline: auto;
 		padding: 2vw;
 		padding-top: 0.1vw;

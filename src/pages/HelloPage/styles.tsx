@@ -18,7 +18,7 @@ const StyledHelloPageDiv = styled.div`
 		align-content: center;
 
 		img {
-			margin-top: 20%;
+			margin-top: 15%;
 			height: 350px;
 			user-select: none;
 			pointer-events: none;
@@ -31,9 +31,13 @@ const StyledHelloPageDiv = styled.div`
 	.section__actions--right {
 		.section__actions--right__title {
 			margin: 0;
-			margin-top: 80px;
+			margin-top: 60px;
 			font-size: 3.7em;
 			font-weight: bold;
+
+			@media (max-width: ${SECTION_MEDIA_MAX_WIDTH}) {
+				margin-top: 30px;
+			}
 		}
 
 		.section__actions--right__paragraph {
@@ -43,11 +47,19 @@ const StyledHelloPageDiv = styled.div`
 		}
 
 		.section__actions--right__already-have-account {
-			margin-top: 50px;
+			margin-top: 20px;
 
 			p {
 				font-size: 1.2em;
 				font-weight: bold;
+			}
+
+			@media (max-width: ${SECTION_MEDIA_MAX_WIDTH}) {
+				margin-top: 0;
+
+				p {
+					margin: 10px;
+				}
 			}
 		}
 

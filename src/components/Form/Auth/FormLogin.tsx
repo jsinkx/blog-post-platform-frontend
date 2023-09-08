@@ -15,7 +15,7 @@ import ButtonLoginGoogle from '../../Button/Login/ButtonLoginGoogle'
 import Divider from '../../Divider'
 import Error from '../../Error'
 
-import { StyledInput, StyledLoginForm } from './styles'
+import { StyledForm, StyledInput } from './styles'
 
 type FormLoginValues = {
 	username: string
@@ -36,7 +36,7 @@ const FormLogin: React.FC = () => {
 		},
 	})
 
-	const [loginError, setLoginError] = React.useState<string[]>([])
+	const [handledErrors, setHandledErrors] = React.useState<string[]>([])
 
 	const handleSuccessLogin = (token: string) => {
 		token && window.localStorage.setItem('token', token)
@@ -44,9 +44,11 @@ const FormLogin: React.FC = () => {
 
 	const handleErrorLogin = (err: unknown) => {
 		if (isErrorWithMessage(err)) {
-			setLoginError(Array.isArray(err.message) ? err.message : [err.message])
+			const { message } = err
+
+			setHandledErrors(Array.isArray(message) ? message : [message])
 		} else {
-			setLoginError(['Something goes wrong'])
+			setHandledErrors(['Something goes wrong'])
 		}
 	}
 
@@ -60,13 +62,13 @@ const FormLogin: React.FC = () => {
 			const { token } = await dispatch(fetchLogin(loginBody)).unwrap()
 
 			handleSuccessLogin(token)
-		} catch (err: unknown) {
+		} catch (err) {
 			handleErrorLogin(err)
 		}
 	}
 
 	return (
-		<StyledLoginForm onSubmit={handleSubmit(onSubmit)}>
+		<StyledForm onSubmit={handleSubmit(onSubmit)}>
 			<h2> Log In </h2>
 			<ButtonLoginGoogle
 				onClick={() => null}
@@ -92,7 +94,7 @@ const FormLogin: React.FC = () => {
 				placeholder="Password..."
 			/>
 			{errors.password && <Error message={errors.password.message || ''} />}
-			{loginError && loginError.map((err) => <Error key={err} message={err} />)}
+			{handledErrors && handledErrors.map((err) => <Error key={err} message={err} />)}
 			<Button
 				textColor={Colors.black}
 				color={Colors.white}
@@ -113,7 +115,7 @@ const FormLogin: React.FC = () => {
 			>
 				Forgot password ?
 			</Button>
-		</StyledLoginForm>
+		</StyledForm>
 	)
 }
 

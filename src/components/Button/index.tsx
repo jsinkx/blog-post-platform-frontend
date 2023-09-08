@@ -12,6 +12,7 @@ export type ButtonProps = {
 	textColor?: string
 	color?: string
 	disabled?: boolean
+	type?: 'button' | 'submit' | 'reset'
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
 	textColor = Colors.white,
 	color = Colors.black,
 	disabled,
+	type = 'button',
 	...props
 }) => {
 	return (
@@ -32,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
 			$textColor={textColor}
 			$color={color}
 			disabled={disabled}
+			type={type}
 			{...props}
 		>
 			{children}

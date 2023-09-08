@@ -75,7 +75,6 @@ const HelloPage: React.FC = () => {
 				>
 					Create account
 				</Button>
-
 				<div className="section__actions--right__already-have-account">
 					<p> Have account ? </p>
 					<Button variant="outlined" color={Colors.blue} onClick={() => handleOpenModal(FormAuthNames.LOGIN)}>
