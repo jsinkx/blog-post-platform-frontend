@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import FormAuthContext, { FormAuthNames } from '../../context/form-auth-context'
 
@@ -16,16 +17,10 @@ import BlogPostPlatformWhiteIcon from '../../assets/images/blog-post-white-logo-
 import StyledHelloPageDiv from './styles'
 
 const HelloPage: React.FC = () => {
+	const navigate = useNavigate()
+
 	const [isOpen, setIsOpen] = React.useState(false)
 	const [currentForm, setCurrentForm] = React.useState(FormAuthNames.LOGIN)
-
-	const formAuthContextValue = React.useMemo(
-		() => ({
-			currentForm,
-			setCurrentForm,
-		}),
-		[currentForm],
-	)
 
 	const handleOpenModal = (type: FormAuthNames) => {
 		setIsOpen(true)
@@ -35,6 +30,20 @@ const HelloPage: React.FC = () => {
 	const handleCloseModal = () => {
 		setIsOpen(false)
 	}
+
+	const handleSuccess = React.useCallback(() => {
+		handleCloseModal()
+		navigate('/')
+	}, [navigate])
+
+	const formAuthContextValue = React.useMemo(
+		() => ({
+			currentForm,
+			setCurrentForm,
+			cb: handleSuccess,
+		}),
+		[currentForm, handleSuccess],
+	)
 
 	return (
 		<StyledHelloPageDiv>

@@ -1,9 +1,15 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import FormAuthContext from '../../../context/form-auth-context'
+
 import Colors from '../../../shared/colors'
 
 import isErrorWithMessage from '../../../utils/is-error-with-message'
+
+import { fetchRegister } from '../../../redux/slices/auth/slice'
+
+import useAppDispatch from '../../../hooks/useAppDispatch'
 
 import Button from '../../Button'
 import Error from '../../Error'
@@ -21,6 +27,10 @@ type FormRegisterValues = {
 }
 
 const FormRegister: React.FC = () => {
+	const dispatch = useAppDispatch()
+
+	const { cb } = React.useContext(FormAuthContext)
+
 	const {
 		formState: { errors },
 		register,
@@ -45,6 +55,8 @@ const FormRegister: React.FC = () => {
 
 	const handleSuccessRegister = (token: string) => {
 		token && window.localStorage.setItem('token', token)
+
+		cb && cb()
 	}
 	const handleErrorRegister = (err: unknown) => {
 		if (isErrorWithMessage(err)) {
@@ -56,9 +68,9 @@ const FormRegister: React.FC = () => {
 		}
 	}
 
-	const onSubmit: SubmitHandler<FormRegisterValues> = async () => {
+	const onSubmit: SubmitHandler<FormRegisterValues> = async (registerBody) => {
 		try {
-			const token = ''
+			const { token } = await dispatch(fetchRegister(registerBody)).unwrap()
 
 			handleSuccessRegister(token)
 		} catch (err) {
@@ -117,8 +129,8 @@ const FormRegister: React.FC = () => {
 						</Button>
 					</>
 				)}
+				{handledErrors && handledErrors.map((err) => <Error key={err} message={err} />)}
 			</Stepper>
-			{handledErrors && handledErrors.map((err) => <Error key={err} message={err} />)}
 		</StyledForm>
 	)
 }

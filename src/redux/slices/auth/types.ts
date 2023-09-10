@@ -2,12 +2,12 @@ import Status from '../../../shared/status'
 
 import type { ErrorWithMessage } from '../../../utils/is-error-with-message'
 
-export type AuthLoginBody = {
+export type AuthRegisterBody = {
 	username: string
 	password: string
 }
 
-export type AuthLoginResponse = {
+export type AuthRegisterResponse = {
 	_id: string
 	username: string
 	firstName: string
@@ -22,13 +22,20 @@ export type AuthLoginResponse = {
 	token: string
 }
 
+export type AuthLoginBody = {
+	username: string
+	password: string
+}
+
+export type AuthLoginResponse = AuthRegisterResponse
+
 export type AuthResponseError = {
 	response: {
 		data: ErrorWithMessage
 	}
 }
 
-export type AuthData = AuthLoginResponse | null
+export type AuthData = AuthRegisterResponse | AuthLoginResponse | null
 
 export type IAuthState = {
 	data: AuthData

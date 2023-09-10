@@ -2,12 +2,37 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import type { AxiosError, AxiosResponse } from 'axios'
 
-import type { AuthLoginBody, AuthLoginResponse, AuthResponseError, IAuthState } from './types'
+import type {
+	AuthLoginBody,
+	AuthLoginResponse,
+	AuthRegisterBody,
+	AuthRegisterResponse,
+	AuthResponseError,
+	IAuthState,
+} from './types'
 
 import axios from '../../../shared/axios'
 import Status from '../../../shared/status'
 
 // Thunks
+
+export const fetchRegister = createAsyncThunk<AuthRegisterResponse, AuthRegisterBody>(
+	'auth/fetchRegister',
+	async (body, { rejectWithValue }) => {
+		try {
+			const { data } = await axios.post<AuthRegisterBody, AxiosResponse<AuthRegisterResponse>, AuthRegisterBody>(
+				'/api/auth/register',
+				body,
+			)
+
+			return data
+		} catch (err) {
+			const { response } = err as AxiosError<AuthResponseError>
+
+			return rejectWithValue(response?.data)
+		}
+	},
+)
 
 export const fetchLogin = createAsyncThunk<AuthLoginResponse, AuthLoginBody>(
 	'auth/fetchLogin',
@@ -54,6 +79,21 @@ const authSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
+		// Register
+		builder
+			.addCase(fetchRegister.pending, (state) => {
+				state.data = null
+				state.status = Status.LOADING
+			})
+			.addCase(fetchRegister.fulfilled, (state, action) => {
+				state.data = action.payload
+				state.status = Status.LOADED
+			})
+			.addCase(fetchRegister.rejected, (state) => {
+				state.data = null
+				state.status = Status.ERROR
+			})
+
 		// Login
 		builder
 			.addCase(fetchLogin.pending, (state) => {

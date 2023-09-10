@@ -1,6 +1,8 @@
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import FormAuthContext from '../../../context/form-auth-context'
+
 import Colors from '../../../shared/colors'
 
 import isErrorWithMessage from '../../../utils/is-error-with-message'
@@ -25,6 +27,8 @@ type FormLoginValues = {
 const FormLogin: React.FC = () => {
 	const dispatch = useAppDispatch()
 
+	const { cb } = React.useContext(FormAuthContext)
+
 	const {
 		formState: { errors },
 		register,
@@ -40,6 +44,8 @@ const FormLogin: React.FC = () => {
 
 	const handleSuccessLogin = (token: string) => {
 		token && window.localStorage.setItem('token', token)
+
+		cb && cb()
 	}
 
 	const handleErrorLogin = (err: unknown) => {

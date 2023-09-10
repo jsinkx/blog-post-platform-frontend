@@ -10,11 +10,13 @@ export enum FormAuthNames {
 type InitialContext = {
 	currentForm: FormAuthNames
 	setCurrentForm: React.Dispatch<React.SetStateAction<FormAuthNames>>
+	cb?: () => void
 }
 
 const initialContext: InitialContext = {
 	currentForm: FormAuthNames.LOGIN,
 	setCurrentForm: () => null,
+	cb: () => null,
 }
 
 const FormAuthContext = React.createContext(initialContext)
