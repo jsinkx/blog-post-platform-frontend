@@ -16,7 +16,7 @@
 		"@reduxjs/toolkit": "^1.9.5",
 		"@testing-library/react": "^14.1.2",
 		"@testing-library/user-event": "^14.4.3",
-		"@types/node": "^20.8.9",
+		"@types/node": "^20.10.0",
 		"@types/react": "^18.2.37",
 		"@types/react-dom": "^18.2.14",
 		"axios": "^1.6.0",
